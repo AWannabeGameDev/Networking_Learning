@@ -1,0 +1,35 @@
+Host : A device that sends or receives traffic over a network
+- Client : initiates a request
+- Server : responds to a request
+
+IP Address : Address of a host over a network
+- xxx.xxx.xxx.xxx (4 8-bit numbers)
+- Hierarchical arrangement
+
+Network : Logical grouping of hosts, transports traffic b/w those hosts
+Created when hosts are connected.
+Owns a particular IP address space
+May contain subnetworks.
+The internet is just different networks connecting centrally to communicate with each other.
+
+Repeater : Signals across a connection may diminish. Repeater strengthens signal.
+
+Hub : A multiport repeater. Strengthens signals and emits in all other ports
+Disadvantage : All data received by and sent to all connected hosts
+
+Bridge : A device between two hubs. Knows which hosts are on which side, and accordingly allows/disallows data through itself.
+
+Switch : Combination of hub and bridge
+Allows/disallows data on a per-port basis. Data transmission only happens between hosts that are involved.
+Facilitate communication within a network.
+Switching : moving data within network
+
+Router : Facilitates communication between networks.
+Needed to connect to the internet.
+A logical traffic control point (security policies, filtering, redirecting). Usually not needed within a network.
+Knows which networks it is connected to -> Routes -> Routing table
+Has an IP address in each network it is connected to called default gateway of that network, which is the interface for the network to communicate with other networks.
+Create the hierarchies of IP addresses and the internet, since networks communicate with each other via routers. The internet is also just a lot of connected routers. 
+Routing : moving data between networks
+
+Other network devices also do some form of switching and routing

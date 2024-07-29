@@ -1,0 +1,27 @@
+Switch :
+3 functions : Learn, flood, forward
+Maintain a MAC address table
+Each time receives a frame from a new port, learns the source MAC to this port number in its MAC table
+If dest MAC is given (unicast) but switch does not know, floods - send to all ports. If switch knows, uses that port
+If dest MAC is fff.fff.fff.fff (broadcast), does not look at MAC table at all. Floods.
+Flood - function of switch. Broadcast - type of frame
+Broadcast always flooded, unicast sometimes flooded
+With multiple switches, a switch will simply learn multiple MAC addresses on a single port
+
+Router :
+Has muliple interfaces that connect to a network - each interface has IP and MAC and ARP-cache like normal host
+Router vs. host - If dest IP is not self, host discards, router tries to forward
+Routing table
+Direct routes - Router knows which network (IP space, e.g. 192.168.1.x) is on which interface. If packet with dest IP in one of these is received, router forwards to that network (same process as intranetwork comm) by constructing an L2 header to that device.
+Static routes - Preconfigured routes by an admin. Tells which router (its IP) to go to (within a connected network) for a network that is not directly connected. For going to that IP, it again refers to the same table and uses a DC.
+Dynamic routes - Same format as static route, but learnt automatically by "talking" to other routers. Talking protocol - Dynamic Routing Protocol
+When router sends data to another router, it puts the MAC address of that router, in the L2 header, and doesn't change the original dest IP in L3. When other router sees that the dest IP is not itself, it will figure stuff out on its own.
+
+Both router and switches can act as hosts if data is meant to directly be given to them. A switch will then additionally have an IP in case it needs to receive data itself instead of mediating.
+
+Router hierarchy and route summarization :
+Hierarchy because scaling is much easier
+Hierarchies allow for route summarization 
+In routing tables, IP spaces are matched using subnet masks. For /24 mask, first 24 bits (3 numbers) are checked. We can reduce the mask to /16 to include a bigger IP space, or /8. This is called route summarization.
+Route with /0 route is called default route, all IPs match this route.
+When multiple routes are available, the more specific route (higher subnet mask) is used.

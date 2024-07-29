@@ -1,0 +1,45 @@
+A set of rules to communicate
+Just like rules of a spoken language
+7 Layers
+
+Layer 1 : Physical
+Actual physical connections
+Cables, or wireless (wi-fi)
+L1 devices : Cables, repeaters
+
+Layer 2 : Data link
+After physical connection, data needs to be put out for sending
+One singular "hop" in data transmission
+MAC (Media Access Control) addresses of L2 devices used for these hops (12 hex digits, 48 bits)
+The "physical" address of the device. Hardcoded into the device itself
+L2 devices : NIC (Network Interface Card) or Wifi Access Card, Switches
+
+Layer 3 : Network
+Data transmission to an end host may require multiple "hops". This layer makes sure end-to-end transmission.
+ARP (Address Resolution Protocol) ties L2 and L3 together
+L3 devices : Routers, hosts, anything with IP address
+
+Layer 4 : Transport
+One single host may have multiple apps sending and receiving data. Need to distinguish these data streams.
+Different addressing scheme : TCP or UDP. Called ports. 0-65535
+Servers listen to data on a predefined port. Clients choose a random port to make a connection.
+Servers return data to the same port.
+
+Layer 5,6,7 : Application
+An application on the host needs to put data together for all different layers to work. 
+Putting data together - encapsulation. Unpacking it - de-encapsulation
+
+Encapsulation : 
+First, data from the application is given a L4 header : Sending and receiving port addresses (TCP or UDP) - Segment
+Then, L3 header : Sending and receiving IP addreses - Packet
+L2 header : Sending and receiving MAC addresses - Frame
+For each layer, the previous layers' headers are just data to be sent. It doesn't care.
+
+De-encapsulation :
+L2 header : check if MAC address is this one. If yes, send to next layer
+L3 header : check if IP address is this one. If yes, send to next layer.
+L4 header : check for port and send data to that port.
+
+Each device and protocol operates at different layers.
+OSI model is just a model, no strict rules. Exceptions exist
+Example - ARP is neither L2 nor L3.	

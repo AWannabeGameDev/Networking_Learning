@@ -1,0 +1,16 @@
+To another host on the SAME network :
+1. We know the other host is on the same network by looking at its IP, and using a process called subnetting.
+Subnetting involves using the subnet mask which tells how big a network is.
+We can make the L3 header.
+2. We need MAC of other host for L2 header. Use ARP for this.
+Send an ARP request as a broadcast - everyone on the network receives
+Request has our own IP and MAC, and asks for MAC of other IP
+Other IP sends its MAC back with unicast.
+3. Both hosts now have each other in their ARP cache
+4. Communication can be done easily now.
+
+To another host on a DIFFERENT network :
+1. We know the host is on another network via subnetting.
+2. L3 header done.
+3. This time, we resolve the MAC of the DEFAULT GATEWAY (router) because that is in between are comm. 
+4. Data reaches router, router handles this from now on (routing).
