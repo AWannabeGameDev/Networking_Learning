@@ -5,7 +5,7 @@
 #include <ws2tcpip.h>
 #include <stdio.h>
 
-int main()
+int main(int argc, char** argv)
 {
     WSADATA wsaData;
 
@@ -27,13 +27,13 @@ int main()
     int status;
 
     addrinfo hints{};
-    hints.ai_flags = AI_PASSIVE;
-    hints.ai_family = AF_UNSPEC;
-    hints.ai_socktype = SOCK_DGRAM;
+    //hints.ai_flags = AI_PASSIVE;
+    hints.ai_family = AF_INET;
+    hints.ai_socktype = SOCK_STREAM;
 
-    if((status = getaddrinfo(nullptr, "3490", &hints, &myInfo)) != 0)
+    if((status = getaddrinfo(argv[1], nullptr, &hints, &myInfo)) != 0)
     {
-        fprintf(stderr, "Couldn't get address info : %s\n", gai_strerror(status));
+        fprintf(stderr, "Couldn't get address info : \n", gai_strerror(status));
     }
     else
     {

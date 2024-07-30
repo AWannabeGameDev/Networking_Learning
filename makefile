@@ -7,16 +7,16 @@ incDirs =
 libDirs = "C:\Program^Files^(x86)\Windows^Kits\10\Lib\10.0.26100.0\um\x64"
 intermDir = interms
 
-libFilesDebug = WS2_32.Lib
+libFilesDebug = ws2_32.dll
 libFilesRelease = WS2_32.Lib
 
 projectFolder = ..
 subProjDeps =
 
-outDebug = bin\networking_debug.exe
+outDebug = bin\showip.exe
 outRelease = bin\networking_release.exe
 
-preDefinesDebug = _DEBUG
+preDefinesDebug = _DEBUG USE_DEF_FILE
 preDefinesRelease =  
 
 #-----------------------------------------------------------------------
