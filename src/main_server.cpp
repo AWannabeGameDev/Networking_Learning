@@ -66,7 +66,7 @@ int main()
     }
 
     IPandPort clientIPandPort = getIPandPort((sockaddr*)&clientAddr, clientAddr.ss_family);
-    printf("Accepted connection from port %hu on host %s\n", clientIPandPort.port, clientIPandPort.ip);
+    printf("Accepted connection from port %hu on host %s\n", clientIPandPort.port, clientIPandPort.ip.data());
 
     const char* msg = "This is the first server written by Nandan the GOAT!";
     status = send(clientCommSocket, msg, strlen(msg), 0);
