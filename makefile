@@ -4,16 +4,16 @@
 
 srcDirs = src
 incDirs =
-libDirs = "C:\Program^Files^(x86)\Windows^Kits\10\Lib\10.0.26100.0\um\x64"
+libDirs =
 intermDir = interms
 
-libFilesDebug = ws2_32.dll
-libFilesRelease = WS2_32.Lib
+libFilesDebug = ws2_32
+libFilesRelease = ws2_32
 
 projectFolder = ..
 subProjDeps =
 
-outDebug = bin\showip.exe
+outDebug = bin\mynet.exe
 outRelease = bin\networking_release.exe
 
 preDefinesDebug = _DEBUG USE_DEF_FILE
@@ -36,8 +36,8 @@ linkFlags = $(foreach dir, $(libDirs), $(subst ^, $(empty), -L$(dir)))
 preDefDebugFlags = $(foreach def, $(preDefinesDebug), -D$(def))
 preDefReleaseFlags = $(foreach def, $(preDefinesRelease), -D$(def))
 
-libFilesDebugFlag = $(foreach file, $(libFilesDebug), -l:$(file))
-libFilesReleaseFlag = $(foreach file, $(libFilesRelease), -l:$(file))
+libFilesDebugFlag = $(foreach file, $(libFilesDebug), -l$(file))
+libFilesReleaseFlag = $(foreach file, $(libFilesRelease), -l$(file))
 
 debugOptim = -O0
 releaseOptim = -O2
