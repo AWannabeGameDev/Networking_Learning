@@ -3,20 +3,20 @@
 # TODO: Handle subproject dependencies properly
 
 srcDirs = src
-incDirs =
-libDirs =
+incDirs = ..\deps\include
+libDirs = ..\deps\lib
 intermDir = interms
 
-libFilesDebug = ws2_32
-libFilesRelease = ws2_32
+libFilesDebug = :utild.lib ws2_32
+libFilesRelease = :util.lib ws2_32
 
 projectFolder = ..
-subProjDeps =
+subProjDeps = util
 
-outDebug = bin\mynet.exe
+outDebug = bin\myserver.exe
 outRelease = bin\networking_release.exe
 
-preDefinesDebug = _DEBUG USE_DEF_FILE
+preDefinesDebug = _DEBUG
 preDefinesRelease =  
 
 #-----------------------------------------------------------------------

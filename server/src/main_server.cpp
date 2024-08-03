@@ -1,6 +1,6 @@
 #define WIN32_LEAN_AND_MEAN
 
-#include "util.h"
+#include <util.h>
 
 int main()
 {
@@ -16,7 +16,7 @@ int main()
     addrinfo hints
     {
         .ai_flags = AI_PASSIVE,
-        .ai_family = AF_UNSPEC,
+        .ai_family = AF_INET,
         .ai_socktype = SOCK_STREAM
     };
 
@@ -68,18 +68,6 @@ int main()
     IPandPort clientIPandPort = getIPandPort((sockaddr*)&clientAddr, clientAddr.ss_family);
     printf("Accepted connection from port %hu on host %s\n", clientIPandPort.port, clientIPandPort.ip.data());
 
-    const char* msg = "This is the first server written by Nandan the GOAT!";
-    status = send(clientCommSocket, msg, strlen(msg), 0);
-    if(status == -1)
-    {
-        printf("Error sending message to client. Error code : %d\n", WSAGetLastError());
-        freeaddrinfo(myAddr);
-        closesocket(clientCommSocket);
-        closesocket(listenSocket);
-        WSACleanup();
-        return 1;
-    }
-
     char recvedMsg[256];
     status = recv(clientCommSocket, recvedMsg, sizeof(recvedMsg), 0);
     if(status == -1)
@@ -93,6 +81,18 @@ int main()
     }
 
     printf("Message from client : %s\n", recvedMsg);
+
+    const char* msg = "This is the first server written by Nandan the GOAT!";
+    status = send(clientCommSocket, msg, strlen(msg), 0);
+    if(status == -1)
+    {
+        printf("Error sending message to client. Error code : %d\n", WSAGetLastError());
+        freeaddrinfo(myAddr);
+        closesocket(clientCommSocket);
+        closesocket(listenSocket);
+        WSACleanup();
+        return 1;
+    }
 
     freeaddrinfo(myAddr);
     closesocket(clientCommSocket);
